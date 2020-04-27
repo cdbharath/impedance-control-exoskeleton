@@ -1,0 +1,15 @@
+DH Parameters of the 4 dof arm
+
+theta - the rotation around z(n-1) to match x(n)
+alpha - the rotation around x(n-1) to match z(n)
+r     - the distance between the center of frame n and n-1 in x direction
+d     - the distance between the center of frame n and n-1 in z direction
+
+where n is the link number
+
+links  theta  alpha   r   d
+
+1      tht1   pi/2    0   l1
+2      tht2   -pi/2   0   l2
+3      tht3   pi/2    l3  0
+4      tht4   0       l4  0
