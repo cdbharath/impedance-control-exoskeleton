@@ -1,2 +1,6 @@
-# exo-skeleton-fyp
-A design of exoskeleton for arm assistance
+# Upper Arm Exoskeleton
+
+Design and control of an exoskeleton for arm assistance 
+
+
+
