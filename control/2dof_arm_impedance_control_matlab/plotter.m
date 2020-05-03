@@ -4,6 +4,8 @@ close all
 f = figure;
 set(f,'WindowButtonMotionFcn','','WindowButtonDownFcn',@ClickDown,'WindowButtonUpFcn',@ClickUp,'KeyPressFc',@KeyPress);
 
+%%% Init figdata variables %%%
+
 figData.xtarget = [];
 figData.ytarget = [];
 figData.Fx = [];
@@ -53,6 +55,8 @@ set(f,'Color',[1,1,1]);
 % Turn the axis off
 ax = get(f,'Children');
 set(ax,'Visible','off');
+
+
 
 %Animation loop -- Includes symplectic integration
 z1 = p.init;
