@@ -1,4 +1,4 @@
-# Upper Arm Exoskeleton
+# Upper Limb Exoskeleton
 
 Design and control of an exoskeleton for arm assistance 
 
