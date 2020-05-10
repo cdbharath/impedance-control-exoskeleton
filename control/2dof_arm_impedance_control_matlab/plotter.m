@@ -1,17 +1,18 @@
 function plotter(p)
 close all
 
-f = figure;
+f = figure(1);
+
 set(f,'WindowButtonMotionFcn','','WindowButtonDownFcn',@ClickDown,'WindowButtonUpFcn',@ClickUp,'KeyPressFc',@KeyPress);
 
 %%% Init figdata variables %%%
 
-figData.xtarget = [];
-figData.ytarget = [];
+figData.xtarget = [0];
+figData.ytarget = [-2];
 figData.Fx = [];
 figData.Fy = [];
-figData.xend = [];
-figData.yend = [];
+figData.xend = [0];
+figData.yend = [-2];
 figData.fig = f;
 figData.tarControl = true;
 
@@ -63,6 +64,14 @@ z1 = p.init;
 told = 0;
 
 set(f,'UserData',figData);
+
+resp_x_x = zeros(1,175);
+resp_x_y = zeros(1,175);
+resp_x_yc = zeros(1,175);
+resp_y_y = zeros(1,175);
+resp_y_yc = zeros(1,175);
+
+increment = 0;
 
 tic %Start the clock
 while (ishandle(f))
@@ -144,6 +153,32 @@ while (ishandle(f))
     set(tmeter2,'string',strcat(num2str(T2,2),' Nm'));
     
     drawnow;
+    
+    f2 = figure(2);
+    
+    %set(f2, 'units', 'inches', 'position', [5 5 10 9])
+    %set(f2,'Color',[1,1,1]);
+
+    subplot(2,1,1);
+    resp_x_yc = circshift(resp_x_yc,-1);
+    resp_x_yc(175) = figData.xtarget;
+    resp_x_x = circshift(resp_x_x,-1);
+    resp_x_x(175) = tnew;
+    resp_x_y = circshift(resp_x_y,-1);
+    resp_x_y(175) = figData.xend;
+    
+    plot(resp_x_x, resp_x_yc, 'r', resp_x_x, resp_x_y, 'g', 'LineWidth', 2);
+    ylim([-2.5 2.5]);
+    
+    subplot(2,1,2);
+    resp_y_yc = circshift(resp_y_yc,-1);
+    resp_y_yc(175) = figData.ytarget;
+    resp_y_y = circshift(resp_y_y,-1);
+    resp_y_y(175) = figData.yend;
+    
+    plot(resp_x_x, resp_y_yc, 'r', resp_x_x, resp_y_y, 'g', 'LineWidth', 2);
+    ylim([-2.5 2.5]);
+    drawnow
 end
 end
 
