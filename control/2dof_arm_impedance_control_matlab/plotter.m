@@ -166,9 +166,13 @@ while (ishandle(f))
     resp_x_x(175) = tnew;
     resp_x_y = circshift(resp_x_y,-1);
     resp_x_y(175) = figData.xend;
-    
     plot(resp_x_x, resp_x_yc, 'r', resp_x_x, resp_x_y, 'g', 'LineWidth', 2);
     ylim([-2.5 2.5]);
+    
+    %legend({'reference','response'});
+    %xlabel('time');
+    ylabel('coordinate');
+    title('X xoordinate response');
     
     subplot(2,1,2);
     resp_y_yc = circshift(resp_y_yc,-1);
@@ -178,6 +182,12 @@ while (ishandle(f))
     
     plot(resp_x_x, resp_y_yc, 'r', resp_x_x, resp_y_y, 'g', 'LineWidth', 2);
     ylim([-2.5 2.5]);
+    
+    %legend({'reference','response'},'Location','southwest');
+    %xlabel('time');
+    ylabel('coordinate');
+    title('Y xoordinate response');
+    
     drawnow
 end
 end
