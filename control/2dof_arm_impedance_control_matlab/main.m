@@ -8,13 +8,14 @@ rederive = false;
 %%% System Parameters %%%
 
 %Initial conditions
-p.init = [pi/4   0.0   pi/4   0.0]';
+%p.init = [pi/4   0.0   pi/4   0.0]';
+p.init = [pi   0.0   pi/4   0.0]';
 
 p.g = 9.81; %Gravity
-p.m1 = 1; %Mass of link 1
-p.m2 = 1; %Mass of link 2
-p.l1 = 1; %Total length of link 1
-p.l2 = 1; %Total lenght of link 2
+p.m1 = 0.211; %Mass of link 1
+p.m2 = 0.165; %Mass of link 2
+p.l1 = 0.300; %Total length of link 1
+p.l2 = 0.285; %Total lenght of link 2
 p.d1 = p.l1/2; %Center of mass distance along link 1 from the fixed point
 p.d2 = p.l2/2; %Center of mass distance along link 2 from the fixed point
 p.I1 = 1/12*p.m1*p.l1^2; %Moment of inertia of link 1 about COM

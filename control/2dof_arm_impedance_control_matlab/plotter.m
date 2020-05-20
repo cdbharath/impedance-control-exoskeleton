@@ -22,6 +22,21 @@ axis equal
 hold on
 
 %Create link1 object
+%width1 = p.l1*0.05;
+%xdat1 = 0.5*width1*[-1 1 1 -1];
+%ydat1 = p.l1*[0 0 1 1];
+%link1 = patch(xdat1,ydat1, [0 0 0 0],'r');
+
+%Create link2 object
+%width2 = p.l2*0.05;
+%xdat2 = 0.5*width2*[-1 1 1 -1];
+%ydat2 = p.l2*[0 0 1 1];
+%link2 = patch(xdat2,ydat2,[0 0 0 0],'b');
+%axis([-3.5 3.5 -3.6 3.6]);
+
+%h1 = plot(0,0,'.k','MarkerSize',40); %First link anchor
+%h2 = plot(0,0,'.k','MarkerSize',40); %link1-link2 hinge
+
 width1 = p.l1*0.05;
 xdat1 = 0.5*width1*[-1 1 1 -1];
 ydat1 = p.l1*[0 0 1 1];
@@ -32,10 +47,13 @@ width2 = p.l2*0.05;
 xdat2 = 0.5*width2*[-1 1 1 -1];
 ydat2 = p.l2*[0 0 1 1];
 link2 = patch(xdat2,ydat2,[0 0 0 0],'b');
-axis([-3.5 3.5 -3.6 3.6]);
+%axis([-3.5 3.5 -3.6 3.6]);
+axis([-1 1 -1 1]);
+
 
 h1 = plot(0,0,'.k','MarkerSize',40); %First link anchor
 h2 = plot(0,0,'.k','MarkerSize',40); %link1-link2 hinge
+
 
 %Timer label
 timer = text(-3.2,-3.2,'0.00','FontSize',28);
@@ -154,41 +172,41 @@ while (ishandle(f))
     
     drawnow;
     
-    f2 = figure(2);
+    %f2 = figure(2);
     
     %set(f2, 'units', 'inches', 'position', [5 5 10 9])
     %set(f2,'Color',[1,1,1]);
 
-    subplot(2,1,1);
-    resp_x_yc = circshift(resp_x_yc,-1);
-    resp_x_yc(175) = figData.xtarget;
-    resp_x_x = circshift(resp_x_x,-1);
-    resp_x_x(175) = tnew;
-    resp_x_y = circshift(resp_x_y,-1);
-    resp_x_y(175) = figData.xend;
-    plot(resp_x_x, resp_x_yc, 'r', resp_x_x, resp_x_y, 'g', 'LineWidth', 2);
-    ylim([-2.5 2.5]);
+    %subplot(2,1,1);
+    %resp_x_yc = circshift(resp_x_yc,-1);
+    %resp_x_yc(175) = figData.xtarget;
+    %resp_x_x = circshift(resp_x_x,-1);
+    %resp_x_x(175) = tnew;
+    %resp_x_y = circshift(resp_x_y,-1);
+    %resp_x_y(175) = figData.xend;
+    %plot(resp_x_x, resp_x_yc, 'r', resp_x_x, resp_x_y, 'g', 'LineWidth', 2);
+    %ylim([-2.5 2.5]);
     
     %legend({'reference','response'});
     %xlabel('time');
-    ylabel('coordinate');
-    title('X xoordinate response');
+    %ylabel('coordinate');
+    %title('X xoordinate response');
     
-    subplot(2,1,2);
-    resp_y_yc = circshift(resp_y_yc,-1);
-    resp_y_yc(175) = figData.ytarget;
-    resp_y_y = circshift(resp_y_y,-1);
-    resp_y_y(175) = figData.yend;
+    %subplot(2,1,2);
+    %resp_y_yc = circshift(resp_y_yc,-1);
+    %resp_y_yc(175) = figData.ytarget;
+    %resp_y_y = circshift(resp_y_y,-1);
+    %resp_y_y(175) = figData.yend;
     
-    plot(resp_x_x, resp_y_yc, 'r', resp_x_x, resp_y_y, 'g', 'LineWidth', 2);
-    ylim([-2.5 2.5]);
+    %plot(resp_x_x, resp_y_yc, 'r', resp_x_x, resp_y_y, 'g', 'LineWidth', 2);
+    %ylim([-2.5 2.5]);
     
     %legend({'reference','response'},'Location','southwest');
     %xlabel('time');
-    ylabel('coordinate');
-    title('Y xoordinate response');
+    %ylabel('coordinate');
+    %title('Y xoordinate response');
     
-    drawnow
+    %drawnow
 end
 end
 
@@ -235,8 +253,10 @@ function MousePos(varargin)
 
     mousePos = get(figData.simArea,'CurrentPoint');
     if figData.tarControl
-        figData.xtarget = mousePos(1,1);
-        figData.ytarget = mousePos(1,2);
+        %figData.xtarget = mousePos(1,1);
+        %figData.ytarget = mousePos(1,2);
+        figData.xtarget = mousePos(1,1)/3.418;
+        figData.ytarget = mousePos(1,2)/3.418;
     else
         figData.Fx = 10*(mousePos(1,1)-figData.xend);
         figData.Fy = 10*(mousePos(1,2)-figData.yend);
