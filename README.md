@@ -1,6 +1,6 @@
 # Upper Limb Exoskeleton
 
-Design and control of an exoskeleton for arm assistance 
+Impedance control of an exoskeleton for arm assistance 
 
 
 
